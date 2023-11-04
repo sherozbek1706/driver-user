@@ -1,3 +1,11 @@
+import "./home.css";
+import { Navbar } from "../../components";
 export const Home = () => {
-  return <h1>Assalomu Alaykum from HOME:)</h1>;
+  return (
+    <div className="DefaultHome">
+      <div className="Home">
+        <Navbar />
+      </div>
+    </div>
+  );
 };
