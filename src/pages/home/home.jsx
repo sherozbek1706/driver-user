@@ -1,10 +1,14 @@
 import "./home.css";
-import { Navbar } from "../../components";
+import { Header, Navbar } from "../../components";
 export const Home = () => {
   return (
-    <div className="DefaultHome">
+    <div className="Default">
+      <Navbar />
       <div className="Home">
-        <Navbar />
+        <Header
+          icon={<i className="bx bx-home-alt icon"></i>}
+          title={"Bosh Sahifa"}
+        />
       </div>
     </div>
   );
