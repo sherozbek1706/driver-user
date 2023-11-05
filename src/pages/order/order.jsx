@@ -1,11 +1,15 @@
-import { Navbar } from "../../components";
+import { Header, Navbar } from "../../components";
 import "./order.css";
 
 export const Order = () => {
   return (
-    <div className="DefaultHome">
+    <div className="Default">
+      <Navbar />
       <div className="Order">
-        <Navbar />
+        <Header
+          icon={<i className="bx bx-box icon"></i>}
+          title={"Buyurtma Berish"}
+        />
       </div>
     </div>
   );
