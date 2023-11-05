@@ -5,7 +5,8 @@ export const Navbar = () => {
   return (
     <div className="Navbar">
       <h1 className="NavbarLogo">
-        Driver <span>PLUS +</span>
+        <i className="fa-brands fa-slack icon"></i>
+        Driver <span>PLUS</span>
       </h1>
       <div className="NavbarNav">
         <Link
@@ -14,6 +15,7 @@ export const Navbar = () => {
             pathname == "/" ? "NavbarNavLinkActive" : ""
           }`}
         >
+          <i className="bx bx-home-alt icon"></i>
           Bosh Sahifa
         </Link>
         <Link
@@ -22,6 +24,7 @@ export const Navbar = () => {
             pathname == "/order" ? "NavbarNavLinkActive" : ""
           }`}
         >
+          <i className="bx bx-box icon"></i>
           Buyurtma Berish
         </Link>
         <Link
@@ -30,6 +33,7 @@ export const Navbar = () => {
             pathname == "/order-history" ? "NavbarNavLinkActive" : ""
           }`}
         >
+          <i className="bx bx-archive-in icon"></i>
           Buyurtmalar Tarixi
         </Link>
         <Link
@@ -38,6 +42,7 @@ export const Navbar = () => {
             pathname == "/profile" ? "NavbarNavLinkActive" : ""
           }`}
         >
+          <i className="bx bx-user-circle icon"></i>
           Mening Sahifam
         </Link>
       </div>

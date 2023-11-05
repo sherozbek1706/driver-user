@@ -1,49 +1,97 @@
 .Navbar {
-  width: 100%;
-  height: 80px;
+  width: 300px;
+  overflow: hidden;
+  height: calc(100% - 40px);
   background-color: #fff;
-  padding: 0 80px;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  padding: 20px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #f1f1f1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #e7eff6;
+  border-radius: 4px;
 }
 .NavbarLogo {
   font-weight: 600;
-  letter-spacing: -1.5px;
-  font-size: 32px;
+  letter-spacing: -2px;
+  font-size: 28px;
+  margin: 0px 0 30px 0;
 }
+.NavbarLogo .icon {
+  font-size: 28px;
+  margin-right: 10px;
+  color: blueviolet;
+  animation: logoRotate 2s 2s forwards normal;
+  animation-iteration-count: infinite;
+}
+
 .NavbarLogo span {
-  font-weight: 800;
-  color: rgb(38, 27, 48);
+  font-weight: 700;
 }
+
 .NavbarNav {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 .NavbarNav .NavbarNav__link {
-  color: black;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
   text-transform: uppercase;
-  margin-left: 5px;
-  padding: 8px 12px;
-  background-color: #bcbcbc;
+  width: 100%;
+  margin: 5px 0;
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   border-radius: 4px;
-  opacity: 0.9;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: 0.3s ease-in-out;
 }
+.NavbarNav .NavbarNav__link .icon {
+  font-size: 23px;
+  margin: 0 10px 0 0;
+  color: #000;
+  transition: 0.4s ease-in-out;
+}
 .NavbarNav .NavbarNav__link:hover {
-  background-color: #cdcdcd;
+  background-color: #63ace5;
+  color: #fff;
   opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .NavbarNav .NavbarNavLinkActive {
-  background-color: #cdcdcd;
+  background-color: #63ace5;
   opacity: 1;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.NavbarNav .NavbarNav__link:hover .icon {
+  color: #fff;
+}
+.NavbarNav .NavbarNavLinkActive .icon {
+  color: #fff;
+}
+@keyframes logoRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
