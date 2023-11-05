@@ -1,8 +1,8 @@
 .Profile {
   width: 100%;
-  padding-top: 80px;
+  height: calc(100vh - 40px);
 }
-.ProfileSide {
+/* .ProfileSide {
   width: 100%;
   padding: 10px 0;
   display: flex;
@@ -114,4 +114,4 @@
 }
 .PageOptions__btn:hover .icon {
   color: #fff;
-}
+} */

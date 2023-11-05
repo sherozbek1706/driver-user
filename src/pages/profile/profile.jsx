@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { Navbar } from "../../components";
+import { Header, Navbar } from "../../components";
 import "./profile.css";
 import { handler, success_notify, user_axios } from "../../shared";
 import { api } from "../../utils";
@@ -27,14 +27,14 @@ export const Profile = () => {
   };
 
   return (
-    <div className="DefaultHome">
+    <div className="Default">
+      <Navbar />
       <div className="Profile">
-        <Navbar />
-        {loading ? (
-          <h1>Loading...</h1>
-        ) : (
-          <Fragment>
-            <div className="Page__options">
+        <Header
+          icon={<i className="bx bx-user-circle icon"></i>}
+          title={"Mening Sahifam"}
+        />
+        {/* <div className="Page__options">
               <button className="PageOptions__btn">
                 <i class="fa-solid fa-pen icon"></i>Tahrirlash
               </button>
@@ -83,9 +83,7 @@ export const Profile = () => {
                   </tr>
                 </table>
               </div>
-            </div>
-          </Fragment>
-        )}
+            </div> */}
       </div>
     </div>
   );
