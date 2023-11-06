@@ -1,0 +1,275 @@
+// // import geolocated from "react-geolocation";
+// // import {
+// //   FullscreenControl,
+// //   GeolocationControl,
+// //   Map,
+// //   Placemark,
+// //   RouteButton,
+// //   RulerControl,
+// //   TrafficControl,
+// //   TypeSelector,
+// //   YMaps,
+// //   ZoomControl,
+// // } from "@pbe/react-yandex-maps";
+// // import "./home.css";
+// // import { Fragment, useEffect, useState } from "react";
+// // import { useGeoLocation } from "../../hooks/useGeoLocation";
+
+// // export const Home = () => {
+// //   const [selectedCoords, setSelectedCoords] = useState(null);
+
+// //   const handleMapClick = (event) => {
+// //     const { coords } = event.get("target");
+
+// //     console.log(event);
+
+// //     // Update the selected coordinates
+// //     setSelectedCoords(coords);
+// //   };
+// //   const location = useGeoLocation();
+
+// //   if (!location) {
+// //     return "Loading...";
+// //   }
+
+// //   return (
+// //     // <YMaps className="Home" query={{ lang: "uz_UZ" }}>
+// //     //   <div>
+// //     //     My awesome application with maps!
+// //     //     <Map
+// //     //       defaultState={{
+// //     //         center: [55.75, 37.57],
+// //     //         zoom: 9,
+// //     //         controls: [],
+// //     //       }}
+// //     //     >
+// //     //       <ZoomControl options={{ float: "right" }} />
+// //     //       <TypeSelector options={{ float: "right" }} />
+// //     //       <TrafficControl options={{ float: "right" }} />
+// //     //       <GeolocationControl options={{ float: "left" }} />
+// //     //       <RouteButton options={{ float: "right" }} />
+// //     //       <FullscreenControl />
+// //     //       <RulerControl options={{ float: "right" }} />
+// //     //       <Placemark defaultGeometry={[55.751574, 37.573856]} />
+// //     //     </Map>
+// //     //   </div>
+// //     // </YMaps>
+
+// //     <Fragment>
+// //       <YMaps>
+// //         <Map
+// //           defaultState={{
+// //             center: [location?.coordinates?.lat, location?.coordinates?.lng],
+// //             zoom: 20,
+// //           }}
+// //           width="100%"
+// //           height="100vh"
+// //           onClick={handleMapClick}
+// //         >
+// //           <Placemark
+// //             defaultGeometry={[
+// //               location?.coordinates?.lat,
+// //               location?.coordinates?.lng,
+// //             ]}
+// //           />
+// //           {selectedCoords && <Placemark geometry={selectedCoords} />}
+// //         </Map>
+// //       </YMaps>
+// //       {/* {location.loaded ? JSON.stringify(location) : "Location topilmadi"} */}
+// //     </Fragment>
+// //   );
+// // };
+
+// import React, { useState } from "react";
+// import {
+//   YMaps,
+//   Map,
+//   Placemark,
+//   GeoObject,
+//   ZoomControl,
+//   TypeSelector,
+//   TrafficControl,
+//   GeolocationControl,
+//   RouteButton,
+// } from "@pbe/react-yandex-maps";
+// import { useGeoLocation } from "../../hooks/useGeoLocation";
+
+// export const Home = () => {
+//   const [url, setUrl] = useState("");
+//   const [selectedCoords, setSelectedCoords] = useState(null);
+//   const location = useGeoLocation();
+
+//   function calculateDistance(lat1, lon1, lat2, lon2) {
+//     const earthRadius = 6371; // Earth's radius in kilometers
+
+//     // Convert latitude and longitude to radians
+//     const lat1Rad = (lat1 * Math.PI) / 180;
+//     const lon1Rad = (lon1 * Math.PI) / 180;
+//     const lat2Rad = (lat2 * Math.PI) / 180;
+//     const lon2Rad = (lon2 * Math.PI) / 180;
+
+//     // Calculate the differences
+//     const dLat = lat2Rad - lat1Rad;
+//     const dLon = lon2Rad - lon1Rad;
+
+//     // Apply the Haversine formula
+//     const a =
+//       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+//       Math.cos(lat1Rad) *
+//         Math.cos(lat2Rad) *
+//         Math.sin(dLon / 2) *
+//         Math.sin(dLon / 2);
+//     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+//     const distance = earthRadius * c;
+
+//     alert(distance);
+//     return distance;
+//   }
+//   const handleMapClick = (event) => {
+//     const coords = event.get("coords");
+
+//     setUrl(`https://yandex.uz/maps/?ll=${coords[0]}%2C${coords[1]}&z=8`);
+//     // Update the selected coordinates
+
+//     console.log(coords);
+//     setSelectedCoords(coords);
+//   };
+
+//   if (!location.loaded) {
+//     return "Loading...";
+//   }
+
+//   return (
+//     <div className="Home">
+//       <div className="Home__map">
+//         <YMaps query={{ lang: "uz_UZ" }}>
+//           <Map
+//             defaultState={{
+//               center: [location?.coordinates?.lat, location?.coordinates?.lng],
+//               zoom: 20,
+//             }}
+//             width={"100%"}
+//             height={"100vh"}
+//             onClick={handleMapClick}
+//           >
+//             <Placemark
+//               geometry={[
+//                 location?.coordinates?.lat,
+//                 location?.coordinates?.lng,
+//               ]}
+//             />
+//             {selectedCoords && <Placemark geometry={selectedCoords} />}
+
+//             {selectedCoords && (
+//               <GeoObject
+//                 geometry={{
+//                   type: "LineString",
+//                   coordinates: [
+//                     [location?.coordinates?.lat, location?.coordinates?.lng],
+//                     [selectedCoords[0], selectedCoords[1]],
+//                   ],
+//                 }}
+//                 options={{
+//                   geodesic: true,
+//                   strokeWidth: 5,
+//                   strokeColor: "#F008",
+//                 }}
+//               />
+//             )}
+//             <ZoomControl options={{ float: "right" }} />
+//             <TrafficControl options={{ float: "right" }} />
+//             <GeolocationControl options={{ float: "left" }} />
+//             {url && (
+//               <a href={url} target="_blank">
+//                 Manzilga Borish
+//               </a>
+//             )}
+//           </Map>
+//         </YMaps>
+//       </div>
+
+//       <button
+//         onClick={() =>
+//           calculateDistance(
+//             location?.coordinates?.lat,
+//             location?.coordinates?.lng,
+//             selectedCoords[0],
+//             selectedCoords[1]
+//           )
+//         }
+//       >
+//         Masofani hisoblash
+//       </button>
+//     </div>
+//   );
+// };
+
+// import React from "react";
+// import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+
+// const containerStyle = {
+//   width: "400px",
+//   height: "400px",
+// };
+
+// const center = {
+//   lat: -3.745,
+//   lng: -38.523,
+// };
+
+// function Home() {
+//   const { isLoaded } = useJsApiLoader({
+//     id: "google-map-script",
+//     googleMapsApiKey: "AIzaSyDK8htancegV-NEatLuVryA3ThZhzsk5N4",
+//   });
+
+//   const [map, setMap] = React.useState(null);
+
+//   const onLoad = React.useCallback(function callback(map) {
+//     // This is just an example of getting and using the map instance!!! don't just blindly copy!
+//     const bounds = new window.google.maps.LatLngBounds(center);
+//     map.fitBounds(bounds);
+
+//     setMap(map);
+//   }, []);
+
+//   const onUnmount = React.useCallback(function callback(map) {
+//     setMap(null);
+//   }, []);
+
+//   return isLoaded ? (
+//     <GoogleMap
+//       mapContainerStyle={containerStyle}
+//       center={center}
+//       zoom={10}
+//       onLoad={onLoad}
+//       onUnmount={onUnmount}
+//     >
+//       {/* Child components, such as markers, info windows, etc. */}
+//       <></>
+//     </GoogleMap>
+//   ) : (
+//     <></>
+//   );
+// }
+
+// export default React.memo(Home);
+
+// import {
+//   APIProvider,
+//   Map,
+//   AdvancedMarker,
+//   Pin,
+//   InfoWindow,
+// } from "@vis.gl/react-google-maps";
+
+// export const Home = () => {
+//   const position = { lat: 53.54, lng: 10 };
+//   return (
+//     <APIProvider apiKey={"AIzaSyCHtTkpBs4PJWHHpUSLd9SjmYwO6a1R0Lk"}>
+//       <div style={{ width: "100%", height: "100vh" }}>
+//         <Map zoom={9} center={position}></Map>
+//       </div>
+//     </APIProvider>
+//   );
+// };
