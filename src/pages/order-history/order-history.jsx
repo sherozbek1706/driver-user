@@ -1,4 +1,5 @@
 import { Header, Navbar } from "../../components";
+import { Build } from "../../layouts";
 import "./order-history.css";
 
 export const OrderHistory = () => {
@@ -10,6 +11,9 @@ export const OrderHistory = () => {
           icon={<i className="bx bx-archive-in icon"></i>}
           title={"Buyurtmalar Tarixi"}
         />
+        <div className="OrderHistoryMain">
+          <Build />
+        </div>
       </div>
     </div>
   );

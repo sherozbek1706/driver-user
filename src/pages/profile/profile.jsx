@@ -3,6 +3,7 @@ import { Header, Navbar } from "../../components";
 import "./profile.css";
 import { handler, success_notify, user_axios } from "../../shared";
 import { api } from "../../utils";
+import { Build } from "../../layouts";
 export const Profile = () => {
   const [data, setData] = useState([]);
   const [section, setSection] = useState("1");
@@ -34,6 +35,9 @@ export const Profile = () => {
           icon={<i className="bx bx-user-circle icon"></i>}
           title={"Mening Sahifam"}
         />
+        <div className="ProfileMain">
+          <Build />
+        </div>
         {/* <div className="Page__options">
               <button className="PageOptions__btn">
                 <i class="fa-solid fa-pen icon"></i>Tahrirlash

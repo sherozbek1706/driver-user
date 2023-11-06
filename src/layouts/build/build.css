@@ -1,0 +1,19 @@
+.Build {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  padding: 50px 0;
+}
+.Build .icon {
+  font-size: 120px;
+  padding: 20px;
+  color: #63ace5;
+}
+.Build__title {
+  font-size: 28px;
+  letter-spacing: -1.4px;
+}

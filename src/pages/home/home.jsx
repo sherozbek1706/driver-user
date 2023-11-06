@@ -1,5 +1,6 @@
 import "./home.css";
 import { Header, Navbar } from "../../components";
+import { Build } from "../../layouts";
 export const Home = () => {
   return (
     <div className="Default">
@@ -9,6 +10,9 @@ export const Home = () => {
           icon={<i className="bx bx-home-alt icon"></i>}
           title={"Bosh Sahifa"}
         />
+        <div className="HomeMain">
+          <Build />
+        </div>
       </div>
     </div>
   );

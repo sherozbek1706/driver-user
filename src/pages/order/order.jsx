@@ -1,4 +1,5 @@
 import { Header, Navbar } from "../../components";
+import { Build } from "../../layouts";
 import "./order.css";
 
 export const Order = () => {
@@ -10,6 +11,9 @@ export const Order = () => {
           icon={<i className="bx bx-box icon"></i>}
           title={"Buyurtma Berish"}
         />
+        <div className="OrderMain">
+          <Build />
+        </div>
       </div>
     </div>
   );
