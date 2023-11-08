@@ -52,30 +52,38 @@
   align-items: center;
   justify-content: flex-start;
   border-radius: 4px;
-  transition: 0.3s ease-in-out;
+  color: #000;
+  transition: 0.4s ease-in-out;
 }
 .NavbarNav .NavbarNav__link .icon {
   font-size: 23px;
   margin: 0 10px 0 0;
-  color: #000;
+  color: #000000;
   transition: 0.4s ease-in-out;
 }
 .NavbarNav .NavbarNav__link:hover {
-  background-color: #63ace5;
-  color: #fff;
+  background-color: #63ade556;
+  /* color: #fff; */
   opacity: 1;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
+
 .NavbarNav .NavbarNavLinkActive {
   background-color: #63ace5;
   opacity: 1;
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
-.NavbarNav .NavbarNav__link:hover .icon {
+.NavbarNav .NavbarNavLinkActive .icon {
   color: #fff;
 }
-.NavbarNav .NavbarNavLinkActive .icon {
+.NavbarNav .NavbarNavLinkActive:hover {
+  background-color: #63ace5;
+  opacity: 1;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.NavbarNav .NavbarNavLinkActive:hover .icon {
   color: #fff;
 }
 @keyframes logoRotate {
