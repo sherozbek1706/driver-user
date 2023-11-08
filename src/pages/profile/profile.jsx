@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { Header, Navbar } from "../../components";
 import "./profile.css";
-import { handler, success_notify, user_axios } from "../../shared";
+import { handler, info_notify, success_notify, user_axios } from "../../shared";
 import { api } from "../../utils";
 import { Build } from "../../layouts";
 export const Profile = () => {
@@ -27,6 +27,15 @@ export const Profile = () => {
     }
   };
 
+
+  const logoutFunc = () => {
+    info_notify("Tizimdan chiqdingiz.")
+    localStorage.clear();
+    setTimeout(() => {
+      window.location.assign("/");
+    }, 1000);
+  }
+
   return (
     <div className="Default">
       <Navbar />
@@ -35,59 +44,28 @@ export const Profile = () => {
           icon={<i className="bx bx-user-circle icon"></i>}
           title={"Mening Sahifam"}
         />
-        <div className="ProfileMain page_build">
-          <Build />
-        </div>
-        {/* <div className="Page__options">
-              <button className="PageOptions__btn">
-                <i className="fa-solid fa-pen icon"></i>Tahrirlash
-              </button>
+        <div className="ProfileMain">
+        {/* <div className="ProfileMain page_build"> */}
+          {/* <Build /> */}
+          <div className="ProfileBanner">
+            <h1 className="ProfileBanner__title">{data.first_name} {data.last_name}</h1>
+            <div className="profileBannerImage">
+              <img src={api + data.image} alt="" />
             </div>
-            <div className="ProfileSide">
-              <div className="ProfileSide__left">
-                <div className="ProfileSideLeft__image">
-                  <img src={api + data.image} alt={data.first_name} />
-                </div>
-                <h1 className="ProfileSideLeft__fullName">
-                  {data.first_name} {"  "} {data.last_name}
-                </h1>
-              </div>
-              <div className="ProfileSide__right">
-                <h1 className="ProfileSideRight__title">Ma'lumotlaringiz</h1>
-                <table className="ProfileSideRight__table">
-                  <tr>
-                    <td>ID</td>
-                    <td>{data.id}</td>
-                  </tr>
-                  <tr>
-                    <td>ISM</td>
-                    <td>{data.first_name}</td>
-                  </tr>
-                  <tr>
-                    <td>FAMILYA</td>
-                    <td>{data.last_name}</td>
-                  </tr>
-                  <tr>
-                    <td>USERNAME</td>
-                    <td>{data.username}</td>
-                  </tr>
-                  <tr>
-                    <td>TELEFON RAQAM</td>
-                    <td>{data.phone_number}</td>
-                  </tr>
-                  <tr>
-                    <td>PAROL</td>
-                    <td>***********</td>
-                  </tr>
-                  <tr>
-                    <td>BLOKLANGANMI ?</td>
-                    <td>
-                      {data.is_deleted ? "Bloklangan❌" : "Bloklanmagan ✅"}
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div> */}
+          </div>
+          <div className="ProfileInfo">
+            <div className="ProfileInfo__options">
+            <button className="ProfileInfoBtns"><i className="fa-solid fa-key icon"></i>Parol Almashtirish</button>
+              <button className="ProfileInfoBtns" ><i className="fa-solid fa-pen icon"></i>Tahrirlash</button>
+              <button className="ProfileInfoBtns"  onClick={logoutFunc}><i className="fa-solid fa-right-from-bracket icon"></i>Tizimdan chiqish</button>
+            </div>
+            <div className="ProfileInfos">
+              <h2 className="ProfileInfos__username">@{data.username}</h2>
+              <h2 className="ProfileInfos__fullname">{data.first_name} {data.last_name}</h2>
+              <h2 className="ProfileInfos__number">{data.phone_number}</h2>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

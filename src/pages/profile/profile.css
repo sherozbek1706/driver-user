@@ -10,6 +10,104 @@
   border-radius: 4px;
   
 }
+.ProfileBanner{
+  width: 100%;
+  height: 180px;
+  /* background-color: rgba(255, 255, 255, 0.418); */
+  background: linear-gradient(to bottom,#ffffff10,#ffffff20,#ffffff30,#ffffff50,#ffffff90,#ffffffd2,#ffffffd8,#ffffffee,#fffffff1,#ffffff90,#ffffff70,#ffffff50,#ffffff30,#ffffff10);  
+  box-shadow: rgba(0, 0, 0, 0.041) 0 0 0 2px;
+  border-radius: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px 40px;
+}
+.profileBannerImage{
+  position: absolute;
+  top: 60px;
+  left: 30px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 3px;
+}
+.profileBannerImage img{
+  width: 100%;
+}
+.ProfileBanner__title{
+  text-transform: capitalize;
+  letter-spacing: -3px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 36px;
+}
+.ProfileInfo{
+  width: 100%;
+  padding: 0px 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-left: 280px;
+}
+.ProfileInfo__options{
+  width: 100%;
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.ProfileInfoBtns{
+  margin: 15px 0;
+  margin-left: 20px;
+  padding: 8px 22px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  border: none;
+  color: #fff;
+  background-color: #54b2a9d5;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: .4s ease-in-out;
+}
+.ProfileInfoBtns:hover{
+  background-color: #54b2a969;
+  color: #000;
+}
+.ProfileInfoBtns .icon{
+  font-size: 16px;
+  margin-right: 10px;
+}
+.ProfileInfos{
+  padding: 10px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  /* border: 1px solid red; */
+}
+.ProfileInfos__username{
+  font-weight: 600;
+  font-size: 22px;
+}
+.ProfileInfos__fullname{
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 500;
+}
+.ProfileInfos__number{
+  font-size: 16px;
+  font-weight: 400;
+  margin: 5px 0;
+  letter-spacing: 1px;
+}
 /* .ProfileSide {
   width: 100%;
   padding: 10px 0;
