@@ -11,7 +11,7 @@ export const Order = () => {
           icon={<i className="bx bx-box icon"></i>}
           title={"Buyurtma Berish"}
         />
-        <div className="OrderMain">
+        <div className="OrderMain page_build">
           <Build />
         </div>
       </div>

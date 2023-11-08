@@ -10,7 +10,7 @@ export const Home = () => {
           icon={<i className="bx bx-home-alt icon"></i>}
           title={"Bosh Sahifa"}
         />
-        <div className="HomeMain">
+        <div className="HomeMain page_build">
           <Build />
         </div>
       </div>

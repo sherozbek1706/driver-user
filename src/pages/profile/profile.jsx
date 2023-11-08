@@ -35,12 +35,12 @@ export const Profile = () => {
           icon={<i className="bx bx-user-circle icon"></i>}
           title={"Mening Sahifam"}
         />
-        <div className="ProfileMain">
+        <div className="ProfileMain page_build">
           <Build />
         </div>
         {/* <div className="Page__options">
               <button className="PageOptions__btn">
-                <i class="fa-solid fa-pen icon"></i>Tahrirlash
+                <i className="fa-solid fa-pen icon"></i>Tahrirlash
               </button>
             </div>
             <div className="ProfileSide">

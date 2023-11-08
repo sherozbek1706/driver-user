@@ -11,7 +11,7 @@ export const OrderHistory = () => {
           icon={<i className="bx bx-archive-in icon"></i>}
           title={"Buyurtmalar Tarixi"}
         />
-        <div className="OrderHistoryMain">
+        <div className="OrderHistoryMain page_build">
           <Build />
         </div>
       </div>

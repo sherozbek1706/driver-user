@@ -9,11 +9,18 @@
   padding: 50px 0;
 }
 .Build .icon {
-  font-size: 120px;
+  font-size: 100px;
   padding: 20px;
   color: #63ace5;
 }
 .Build__title {
   font-size: 28px;
   letter-spacing: -1.4px;
+}
+.Build__text{
+  font-size: 16px;
+  font-weight: 500;
+  width: 500px;
+  text-align: center;
+  margin-top: 21px;
 }
