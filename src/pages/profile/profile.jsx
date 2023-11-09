@@ -57,14 +57,16 @@ export const Profile = () => {
             <div className="ProfileInfo__options">
             <button className="ProfileInfoBtns"><i className="fa-solid fa-key icon"></i>Parol Almashtirish</button>
               <button className="ProfileInfoBtns" ><i className="fa-solid fa-pen icon"></i>Tahrirlash</button>
+            </div>
+            <div className="ProfileInfo__options">
               <button className="ProfileInfoBtns"  onClick={logoutFunc}><i className="fa-solid fa-right-from-bracket icon"></i>Tizimdan chiqish</button>
             </div>
-            <div className="ProfileInfos">
-              <h2 className="ProfileInfos__username">@{data.username}</h2>
-              <h2 className="ProfileInfos__fullname">{data.first_name} {data.last_name}</h2>
-              <h2 className="ProfileInfos__number">{data.phone_number}</h2>
-            </div>
           </div>
+            <div className="ProfileInfos">
+              <h2 className="ProfileInfos__fullname">{data.first_name} {data.last_name} 
+              <a href={`tel:${data.phone_number}`} className="ProfileInfos__number">{data.phone_number}</a></h2>
+              <h2 className="ProfileInfos__username">@{data.username}</h2>
+            </div>
         </div>
       </div>
     </div>

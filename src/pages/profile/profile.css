@@ -13,10 +13,13 @@
 .ProfileBanner{
   width: 100%;
   height: 180px;
+  background: url("../../assets/images/close-up-land-asphalt-sun-rays-bokeh-blur-background-wallpaper-widescreen-full-screen-widescreen-hd-wallpapers-background-wallpaper.jpg") no-repeat;
+  background-size:cover ;
+  background-position: center;
   /* background-color: rgba(255, 255, 255, 0.418); */
-  background: linear-gradient(to bottom,#ffffff10,#ffffff20,#ffffff30,#ffffff50,#ffffff90,#ffffffd2,#ffffffd8,#ffffffee,#fffffff1,#ffffff90,#ffffff70,#ffffff50,#ffffff30,#ffffff10);  
+  /* background: linear-gradient(to bottom,#ffffff10,#ffffff20,#ffffff30,#ffffff50,#ffffff90,#ffffffd2,#ffffffd8,#ffffffee,#fffffff1,#ffffff90,#ffffff70,#ffffff50,#ffffff30,#ffffff10);   */
   box-shadow: rgba(0, 0, 0, 0.041) 0 0 0 2px;
-  border-radius: 16px;
+  border-radius: 12px;
   position: relative;
   display: flex;
   align-items: center;
@@ -41,14 +44,18 @@
 }
 .ProfileBanner__title{
   text-transform: capitalize;
-  letter-spacing: -3px;
-  font-weight: 600;
+  letter-spacing: -2px;
+  background-color: #fe4a49;
+  padding: 10px 20px;
+  color: #f5f5f5;
+  border-radius: 12px;
+  font-weight: 800;
   text-transform: uppercase;
-  font-size: 36px;
+  font-size: 48px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .ProfileInfo{
   width: 100%;
-  padding: 0px 30px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -57,13 +64,12 @@
 }
 .ProfileInfo__options{
   width: 100%;
-  /* border: 1px solid red; */
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 .ProfileInfoBtns{
-  margin: 15px 0;
+  margin-top: 15px;
   margin-left: 20px;
   padding: 8px 22px;
   font-size: 16px;
@@ -87,26 +93,36 @@
 }
 .ProfileInfos{
   padding: 10px 0;
+  margin-top: 20px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  /* border: 1px solid red; */
 }
 .ProfileInfos__username{
-  font-weight: 600;
-  font-size: 22px;
+  text-transform: lowercase;
+  font-weight: 500;
+  letter-spacing: -0.7px;
+  font-size: 18px;
 }
 .ProfileInfos__fullname{
   text-transform: capitalize;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 34px;
+  letter-spacing: -1.2px;
+  font-weight: 700;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .ProfileInfos__number{
-  font-size: 16px;
-  font-weight: 400;
-  margin: 5px 0;
-  letter-spacing: 1px;
+  font-size:  16px;
+  color: blueviolet;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 6px 18px;
+  background-color: #fff;
+  border-radius: 6px;
 }
 /* .ProfileSide {
   width: 100%;
