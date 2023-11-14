@@ -21,7 +21,6 @@
 // //   const handleMapClick = (event) => {
 // //     const { coords } = event.get("target");
 
-// //     console.log(event);
 
 // //     // Update the selected coordinates
 // //     setSelectedCoords(coords);
@@ -131,7 +130,6 @@
 //     setUrl(`https://yandex.uz/maps/?ll=${coords[0]}%2C${coords[1]}&z=8`);
 //     // Update the selected coordinates
 
-//     console.log(coords);
 //     setSelectedCoords(coords);
 //   };
 

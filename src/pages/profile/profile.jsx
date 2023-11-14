@@ -19,7 +19,6 @@ export const Profile = () => {
       const res = await user_axios("/users/show/me");
       if (res.status == 200) {
         setData(res.data.data);
-        console.log(res.data.data);
         setLoading(false);
       }
     } catch (error) {
