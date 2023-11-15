@@ -29,8 +29,6 @@ export const Order = () => {
       checkUserMe();
     });
     socket.on("buyurtma_tuliq_bajarildi", (msg) => {
-      console.log(msg.order_id);
-      console.log(dataId);
       if(msg.order_id == dataId){
         setSection("6")
       }

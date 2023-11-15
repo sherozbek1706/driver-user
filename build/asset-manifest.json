@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.54b98960.css",
-    "main.js": "/static/js/main.d0a5b5e6.js",
+    "main.js": "/static/js/main.b71bd2e0.js",
     "static/media/close-up-land-asphalt-sun-rays-bokeh-blur-background-wallpaper-widescreen-full-screen-widescreen-hd-wallpapers-background-wallpaper.jpg": "/static/media/close-up-land-asphalt-sun-rays-bokeh-blur-background-wallpaper-widescreen-full-screen-widescreen-hd-wallpapers-background-wallpaper.956587286e779ce0d5cb.jpg",
     "index.html": "/index.html",
     "main.54b98960.css.map": "/static/css/main.54b98960.css.map",
-    "main.d0a5b5e6.js.map": "/static/js/main.d0a5b5e6.js.map"
+    "main.b71bd2e0.js.map": "/static/js/main.b71bd2e0.js.map"
   },
   "entrypoints": [
     "static/css/main.54b98960.css",
-    "static/js/main.d0a5b5e6.js"
+    "static/js/main.b71bd2e0.js"
   ]
 }
