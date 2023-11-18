@@ -16,7 +16,6 @@ export const Order = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // setLoading(false);
     checkUserMe();
     fetchDataRM();
     socket.on("buyurtma_qabul_qilindi", (msg) => {
