@@ -9,3 +9,12 @@
   background-color: #e7eff6;
   border-radius: 4px;
 }
+
+@media (max-width: 1100px) {
+  .Home {
+    height: 100vh;
+  }
+  .HomeMain {
+    min-height: calc(100vh - 70px);
+  }
+}

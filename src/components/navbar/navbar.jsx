@@ -2,11 +2,27 @@ import { Link, useLocation } from "react-router-dom";
 import "./navbar.css";
 export const Navbar = () => {
   const { pathname } = useLocation();
+
+  const handleCloseSitebar = () => {
+    let sitebar = document.querySelector(".Navbar");
+
+    sitebar.classList.remove("sticky-navbar");
+
+    console.log(sitebar);
+  };
+
   return (
     <div className="Navbar">
       <h1 className="NavbarLogo">
         <i className="fa-brands fa-slack icon"></i>
         Driver <span>PLUS</span>
+      </h1>
+      <h1 className="NavbarLogo-media">
+        <p> Driver PLUS</p>
+        <i
+          className="fa-solid fa-circle-xmark navbar-xmark-icon"
+          onClick={handleCloseSitebar}
+        ></i>
       </h1>
       <div className="NavbarNav">
         <Link
