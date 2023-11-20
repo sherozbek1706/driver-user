@@ -24,6 +24,11 @@
   justify-content: center;
   flex-direction: column;
 }
+/* 
+
+
+*/
+
 .OrderMainSection {
   display: flex;
   align-items: center;
@@ -107,6 +112,35 @@
   justify-content: flex-start;
   flex-direction: column;
 }
+
+@media (max-width: 1100px) {
+  .OrderMain__section::after {
+    width: 25px;
+    height: 15px;
+    background-color: #cccccc;
+    left: 45px;
+  }
+  .OrderMain__section::before {
+    width: 25px;
+    height: 15px;
+    background-color: #cccccc;
+    right: 45px;
+  }
+
+  .OrderMain__section_active::after {
+    width: 25px;
+    height: 15px;
+    background-color: blueviolet;
+    left: 45px;
+  }
+  .OrderMain__section_active::before {
+    width: 25px;
+    height: 15px;
+    background-color: blueviolet;
+    right: 45px;
+  }
+}
+
 .OrderMainFormTitle {
   font-size: 26px;
   text-transform: capitalize;

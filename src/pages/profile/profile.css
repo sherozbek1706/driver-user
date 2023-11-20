@@ -24,8 +24,6 @@
     no-repeat;
   background-size: cover;
   background-position: center;
-  /* background-color: rgba(255, 255, 255, 0.418); */
-  /* background: linear-gradient(to bottom,#ffffff10,#ffffff20,#ffffff30,#ffffff50,#ffffff90,#ffffffd2,#ffffffd8,#ffffffee,#fffffff1,#ffffff90,#ffffff70,#ffffff50,#ffffff30,#ffffff10);   */
   box-shadow: rgba(0, 0, 0, 0.041) 0 0 0 2px;
   border-radius: 12px;
   position: relative;

@@ -8,38 +8,39 @@ import { api } from "../../utils";
 
 export const Order = () => {
   const [findDriver, setFindDriver] = useState({});
-  const [section, setSection] = useState("1");
-  const [dataId, setDataId] = useState("")
+  const [section, setSection] = useState("4");
+  const [dataId, setDataId] = useState("");
   const [addressArr, setAddressArr] = useState([]);
   const [address, setAddress] = useState("");
   const [district, setDistrict] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    checkUserMe();
+    setLoading(false);
+    // checkUserMe();
     fetchDataRM();
-    socket.on("buyurtma_qabul_qilindi", (msg) => {
-      checkUserMe();
-    })
-    socket.on("haydovchi_manzilga_yetib_kelibdi", (msg) => {
-      checkUserMe();
-    })
-    socket.on("haydovchi_yulovchi_bilan_yulga_chiqdi", (msg) => {
-      checkUserMe();
-    });
-    socket.on("buyurtma_tuliq_bajarildi", (msg) => {
-      if(msg.order_id == dataId){
-        setSection("6")
-      }
-    })
+    // socket.on("buyurtma_qabul_qilindi", (msg) => {
+    //   checkUserMe();
+    // });
+    // socket.on("haydovchi_manzilga_yetib_kelibdi", (msg) => {
+    //   checkUserMe();
+    // });
+    // socket.on("haydovchi_yulovchi_bilan_yulga_chiqdi", (msg) => {
+    //   checkUserMe();
+    // });
+    // socket.on("buyurtma_tuliq_bajarildi", (msg) => {
+    //   if (msg.order_id == dataId) {
+    //     setSection("6");
+    //   }
+    // });
   }, [socket, loading]);
 
   const checkUserMe = async () => {
     try {
       const res = await user_axios.get("/users/check-me");
-      
+
       if (res.status == 200) {
-        setDataId(res.data.data.id)
+        setDataId(res.data.data.id);
         let data = res.data.data;
         if (data.status == "open") {
           setSection("2");
@@ -55,7 +56,6 @@ export const Order = () => {
         if (data.status == "restart") {
           setSection("5");
         }
-
       }
     } catch (error) {
       setLoading(false);
@@ -112,7 +112,7 @@ export const Order = () => {
       if (res.status == 201) {
         setLoading(true);
         socket.emit("buyurtma_qushish", { msg: "go" });
-        setDistrict("")
+        setDistrict("");
       }
     } catch (error) {
       setLoading(false);
@@ -141,32 +141,37 @@ export const Order = () => {
                   <i class="fa-solid fa-circle-plus icon"></i>
                 </h3>
                 <h3
-                  className={`OrderMain__section ${section >= "2" && "OrderMain__section_active"
-                    }`}
+                  className={`OrderMain__section ${
+                    section >= "2" && "OrderMain__section_active"
+                  }`}
                 >
                   <i class="fa-solid fa-magnifying-glass icon"></i>
                 </h3>
                 <h3
-                  className={`OrderMain__section ${section >= "3" && "OrderMain__section_active"
-                    }`}
+                  className={`OrderMain__section ${
+                    section >= "3" && "OrderMain__section_active"
+                  }`}
                 >
                   <i class="fa-solid fa-taxi icon"></i>
                 </h3>
                 <h3
-                  className={`OrderMain__section ${section >= "4" && "OrderMain__section_active"
-                    }`}
+                  className={`OrderMain__section ${
+                    section >= "4" && "OrderMain__section_active"
+                  }`}
                 >
                   <i class="fa-solid fa-location-dot icon"></i>
                 </h3>
                 <h3
-                  className={`OrderMain__section ${section >= "5" && "OrderMain__section_active"
-                    }`}
+                  className={`OrderMain__section ${
+                    section >= "5" && "OrderMain__section_active"
+                  }`}
                 >
                   <i class="fa-solid fa-route icon"></i>
                 </h3>
                 <h3
-                  className={`OrderMain__section ${section >= "6" && "OrderMain__section_active"
-                    }`}
+                  className={`OrderMain__section ${
+                    section >= "6" && "OrderMain__section_active"
+                  }`}
                 >
                   <i class="fa-solid fa-flag-checkered icon"></i>
                 </h3>
@@ -308,7 +313,10 @@ export const Order = () => {
                       Manzilgan yetib keldingiz. Bizning xizmatdan
                       foydalanganingiz uchun raxmat.
                     </h1>
-                    <button className="OrderMainSixReturn" onClick={() => setSection("1")}>
+                    <button
+                      className="OrderMainSixReturn"
+                      onClick={() => setSection("1")}
+                    >
                       Yangi Buyurtma berish
                     </button>
                   </div>
