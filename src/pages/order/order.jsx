@@ -8,7 +8,7 @@ import { api } from "../../utils";
 
 export const Order = () => {
   const [findDriver, setFindDriver] = useState({});
-  const [section, setSection] = useState("4");
+  const [section, setSection] = useState("1");
   const [dataId, setDataId] = useState("");
   const [addressArr, setAddressArr] = useState([]);
   const [address, setAddress] = useState("");
@@ -17,22 +17,22 @@ export const Order = () => {
 
   useEffect(() => {
     setLoading(false);
-    // checkUserMe();
+    checkUserMe();
     fetchDataRM();
-    // socket.on("buyurtma_qabul_qilindi", (msg) => {
-    //   checkUserMe();
-    // });
-    // socket.on("haydovchi_manzilga_yetib_kelibdi", (msg) => {
-    //   checkUserMe();
-    // });
-    // socket.on("haydovchi_yulovchi_bilan_yulga_chiqdi", (msg) => {
-    //   checkUserMe();
-    // });
-    // socket.on("buyurtma_tuliq_bajarildi", (msg) => {
-    //   if (msg.order_id == dataId) {
-    //     setSection("6");
-    //   }
-    // });
+    socket.on("buyurtma_qabul_qilindi", (msg) => {
+      checkUserMe();
+    });
+    socket.on("haydovchi_manzilga_yetib_kelibdi", (msg) => {
+      checkUserMe();
+    });
+    socket.on("haydovchi_yulovchi_bilan_yulga_chiqdi", (msg) => {
+      checkUserMe();
+    });
+    socket.on("buyurtma_tuliq_bajarildi", (msg) => {
+      if (msg.order_id == dataId) {
+        setSection("6");
+      }
+    });
   }, [socket, loading]);
 
   const checkUserMe = async () => {

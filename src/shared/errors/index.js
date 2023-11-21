@@ -19,4 +19,14 @@ export const handler = (err) => {
       error_notify(error_msg);
     }
   }
+
+  if (status == "401") {
+    if (error_msg == "jwt expired") {
+      error_notify("Tizimga qaytadan kiring");
+      localStorage.clear();
+      setTimeout(() => {
+        window.location.assign("/");
+      }, 1200);
+    }
+  }
 };

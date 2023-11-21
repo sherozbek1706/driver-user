@@ -25,14 +25,23 @@
   flex-direction: column;
 }
 /* 
-
-
+#
+#
+#
+#
+#
+#
+#
+#
 */
 
 .OrderMainSection {
+  padding: 10px 0;
+  padding-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* border: 1px solid red; */
 }
 .OrderMain__section {
   width: 50px;
@@ -45,7 +54,6 @@
   background-color: #cccccc;
   border-radius: 50%;
   color: #000;
-  margin-bottom: 20px;
 }
 .OrderMain__section_active {
   background-color: blueviolet;
@@ -93,7 +101,9 @@
   background-color: blueviolet;
   right: 45px;
 }
-
+.OrderMain__section:last-child {
+  margin-right: 0;
+}
 .OrderMain__section:last-child::after {
   display: none;
 }
@@ -113,33 +123,19 @@
   flex-direction: column;
 }
 
-@media (max-width: 1100px) {
-  .OrderMain__section::after {
-    width: 25px;
-    height: 15px;
-    background-color: #cccccc;
-    left: 45px;
+/* @media (max-width: 1100px) {
+  .Ordercenter {
+    flex-direction: column-reverse;
   }
-  .OrderMain__section::before {
-    width: 25px;
-    height: 15px;
-    background-color: #cccccc;
-    right: 45px;
-  }
+} */
 
-  .OrderMain__section_active::after {
-    width: 25px;
-    height: 15px;
-    background-color: blueviolet;
-    left: 45px;
-  }
-  .OrderMain__section_active::before {
-    width: 25px;
-    height: 15px;
-    background-color: blueviolet;
-    right: 45px;
-  }
-}
+/* 
+#
+#
+#
+#
+#
+*/
 
 .OrderMainFormTitle {
   font-size: 26px;
@@ -210,6 +206,124 @@
 .OrderMainFormBtn:hover {
   background-color: #892be2;
 }
+
+@media (max-width: 1100px) {
+  .OrderMainFormTitle {
+    text-align: center;
+  }
+  .OrderMainFormTitle .icon {
+    display: none;
+  }
+  .OrderMainFormParagraph {
+    text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .OrderMainForm {
+    border-radius: 12px;
+    width: 100%;
+    padding: 60px 40px;
+  }
+  .OrderMainFormTitle {
+    font-size: 26px;
+  }
+  .OrderMainFormParagraph {
+    font-size: 14px;
+  }
+  .OrderMainFormOptions {
+    height: 64px;
+    font-size: 14px;
+  }
+  .OrderMainFormInput {
+    height: 64px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .OrderMain__section {
+    width: 40px;
+    height: 40px;
+    margin-right: 25px;
+  }
+  .OrderMain__section .icon {
+    font-size: 18px;
+  }
+  .OrderMain__section_active .icon {
+    font-size: 18px;
+  }
+
+  .OrderMain__section::after {
+    content: " ";
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background-color: #ccc;
+    left: 35px;
+  }
+  .OrderMain__section::before {
+    content: " ";
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background-color: #ccc;
+    right: 35px;
+  }
+
+  .OrderMain__section_active::after {
+    content: " ";
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background-color: blueviolet;
+    left: 35px;
+    z-index: 2;
+  }
+  .OrderMain__section_active::before {
+    content: " ";
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background-color: blueviolet;
+    right: 35px;
+    z-index: 2;
+  }
+}
+@media (max-width: 480px) {
+  .OrderMainForm {
+    padding: 40px 30px;
+  }
+  .OrderMainFormTitle {
+    font-size: 20px;
+  }
+  .OrderMainFormParagraph {
+    font-size: 12px;
+    margin: 05px 0;
+  }
+  .OrderMainFormOptions {
+    height: 48px;
+    font-size: 12px;
+  }
+  .OrderMainFormInput {
+    height: 48px;
+    font-size: 12px;
+  }
+  .OrderMain {
+    padding: 5px 20px;
+  }
+  .OrderMainSection {
+    transform: scale(0.8);
+  }
+}
+
+/* 
+#
+#
+#
+#
+#
+*/
+
 .OrderMainSearching {
   width: 600px;
   padding: 60px 80px;
@@ -274,6 +388,34 @@
   }
 }
 
+@media (max-width: 650px) {
+  .OrderMainSearching {
+    width: 100%;
+    padding: 40px 30px;
+  }
+  .OrderMainSearching__title {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .OrderMainSearching__btn {
+    font-size: 14px;
+    font-weight: 700;
+    width: 100%;
+  }
+  .OrderMainSearching .SearchChangingForm {
+    font-size: 56px;
+  }
+}
+
+/* 
+#
+#
+#
+#
+#
+*/
+
 .OrderMainDriver {
   width: 600px;
   padding: 60px 80px;
@@ -312,6 +454,7 @@
 }
 .OrderMainDriverCarImg__field {
   width: 90%;
+  background-color: #ccc;
   height: 90%;
   display: flex;
   align-items: center;
@@ -324,7 +467,7 @@
 }
 
 .OrderMainDriverCar__info {
-  width: 310px;
+  width: auto;
   min-height: 100px;
   display: flex;
   flex-direction: column;
@@ -408,6 +551,77 @@
   color: #000;
 }
 
+@media (max-width: 700px) {
+  .OrderMainDriver {
+    width: 100%;
+    padding: 40px 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .OrderMainDriver {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 550px) {
+  .OrderMainDriver__title {
+    font-size: 16px;
+  }
+  .OrderMainDriverCarImg__field {
+    width: 80%;
+    height: 80%;
+  }
+  .OrderMainDriverCarInfo__fullname {
+    font-size: 16px;
+  }
+  .OrderMainDriverCarInfo__text,
+  .OrderDriverCarInfo__number {
+    font-size: 12px;
+  }
+  .OrderMainDriver__order p {
+    font-size: 12px;
+  }
+  .OrderDriverCall__btn {
+    font-size: 14px;
+  }
+  .OrderDriverCall__btn .icon {
+    font-size: 20px;
+  }
+}
+@media (max-width: 450px) {
+  .OrderMainDriver__car {
+    flex-direction: column;
+  }
+  .OrderMainDriverCar__img {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+  }
+  .OrderMainDriverCarImg__field {
+    width: 120px;
+    height: 120px;
+  }
+  .OrderMainDriverCar__info {
+    align-items: center;
+  }
+  .OrderMainDriverCarInfo__fullname {
+    font-size: 20px;
+  }
+  .OrderMainDriverCarInfo__text,
+  .OrderDriverCarInfo__number {
+    font-size: 14px;
+  }
+}
+
+/* 
+#
+#
+#
+#
+#
+*/
+
 .OrderMainFour {
   width: 600px;
   padding: 60px 80px;
@@ -440,6 +654,38 @@
   margin: 10px 0;
 }
 
+@media (max-width: 700px) {
+  .OrderMainFour {
+    width: 100%;
+    padding: 40px 30px;
+  }
+}
+@media (max-width: 550px) {
+  .OrderMainFour .icon {
+    font-size: 44px;
+    width: 90px;
+    height: 90px;
+  }
+  .OrderMainFour h1 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+@media (max-width: 450px) {
+  .OrderMainFour h1 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+/* 
+#
+#
+#
+#
+#
+*/
+
 .OrderMainFive {
   width: 600px;
   padding: 60px 80px;
@@ -471,6 +717,38 @@
   text-align: center;
   margin: 10px 0;
 }
+
+@media (max-width: 700px) {
+  .OrderMainFive {
+    width: 100%;
+    padding: 40px 30px;
+  }
+}
+@media (max-width: 550px) {
+  .OrderMainFive .icon {
+    font-size: 44px;
+    width: 90px;
+    height: 90px;
+  }
+  .OrderMainFive h1 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+@media (max-width: 450px) {
+  .OrderMainFive h1 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+/* 
+#
+#
+#
+#
+#
+*/
 
 .OrderMainSix {
   width: 600px;
@@ -515,4 +793,28 @@
   color: #fff;
   font-size: 16px;
   text-transform: capitalize;
+}
+
+@media (max-width: 700px) {
+  .OrderMainSix {
+    width: 100%;
+    padding: 40px 30px;
+  }
+}
+@media (max-width: 550px) {
+  .OrderMainSix .icon {
+    font-size: 44px;
+    width: 90px;
+    height: 90px;
+  }
+  .OrderMainSix h1 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+@media (max-width: 450px) {
+  .OrderMainSix h1 {
+    font-size: 14px;
+    font-weight: 600;
+  }
 }
