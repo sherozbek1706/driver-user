@@ -6,7 +6,6 @@ import {
   success_notify,
   user_axios,
 } from "../../../shared";
-import Cookies from "js-cookie";
 export const Login = () => {
   const [secretCode, setSecretCode] = useState("");
   const [number, setNumber] = useState("");
