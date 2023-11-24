@@ -17,3 +17,103 @@
     min-height: calc(100vh - 70px);
   }
 }
+
+.OrderLists {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px 0;
+  /* border: 1px solid red; */
+}
+.OrderItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #fff;
+  width: 48%;
+  margin: 5px;
+  max-width: 500px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.037) 0px 4px 12px;
+}
+.OrderItem__head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f6cd613f;
+  border-radius: 6px;
+}
+.OrderItemHead__idx {
+  font-weight: 600;
+  padding: 8px 12px;
+}
+.OrderItemHead__status {
+  font-weight: 600;
+  letter-spacing: -0.6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  background-color: #f6cd61;
+  text-transform: uppercase;
+}
+.OrderItem__body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.OrderItem__address {
+  font-weight: 600;
+  letter-spacing: -1px;
+  margin-top: 10px;
+  font-size: 22px;
+  text-transform: capitalize;
+}
+.OrderItem__district {
+  font-weight: 500;
+  letter-spacing: -0.8px;
+  margin-top: 5px;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.OrderItem__date {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 700px) {
+  .OrderHistoryMain {
+    padding: 10px 20px;
+  }
+  .OrderLists {
+    padding: 10px 0;
+  }
+  .OrderItem {
+    max-width: 100%;
+    width: 100%;
+    margin: 8px 0;
+  }
+}
+@media (max-width: 426px) {
+  .OrderItemHead__idx,
+  .OrderItemHead__status,
+  .OrderItem__date {
+    font-size: 13px;
+  }
+  .OrderItem__address {
+    font-size: 18px;
+  }
+  .OrderItem__district {
+    font-size: 15px;
+  }
+}
