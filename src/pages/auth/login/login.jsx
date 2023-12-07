@@ -6,7 +6,9 @@ import {
   success_notify,
   user_axios,
 } from "../../../shared";
+import { Loader } from "../../../layouts";
 export const Login = () => {
+  const [loading, setLoading] = useState(false);
   const [secretCode, setSecretCode] = useState("");
   const [number, setNumber] = useState("");
   const [first_name, setFirst_name] = useState("");
@@ -155,6 +157,8 @@ export const Login = () => {
     formData.append("username", username);
 
     userCreate(formData);
+
+    setLoading(true);
   };
 
   const userCreate = async (data) => {
@@ -167,7 +171,6 @@ export const Login = () => {
 
       if (res.status == 201) {
         let token = res.data.data.token;
-
         localStorage.setItem("v1_u_t", token);
         success_notify("Ro'yxatdan o'tdingiz 🎉🎉");
         setTimeout(() => {
@@ -176,6 +179,7 @@ export const Login = () => {
       }
     } catch (error) {
       handler(error);
+      setLoading(false);
     }
   };
 
@@ -233,165 +237,183 @@ export const Login = () => {
   return (
     <div className="Login">
       <form className="Login__form" onSubmit={(e) => handleForm(e)}>
-        <h1 className="LoginForm__title">
-          {degree != "4" ? "Ro'yxatdan o'tish" : "Kirish"}
-          <i className="fa-solid fa-arrow-right icon"></i>
-        </h1>
-        {degree == 1 ? (
+        {loading ? (
+          <Loader additionClass={"Login"} />
+        ) : (
           <Fragment>
-            <h2 className="LoginForm__description">
-              Kirish uchun maxfiy kodni bizning{" "}
-              <a
-                href="https://t.me/haydovchilarga_guvohnomabot"
-                target="_blank"
-                className="LoginForm__telegramlink"
-              >
-                @haydovchibot
-              </a>{" "}
-              telegram botimizga kirgan holda olishingiz mumkin. ( Kod faqat 1
-              daqiqa amal qiladi! )
-            </h2>
-            <div className="LoginForm__field">
-              <p className="LoginFormField__title">KOD</p>
-              <div className="LoginFormField__secret">
-                <input
-                  type="text"
-                  name="secret-code"
-                  value={secretCode}
-                  onChange={(e) => handleChangeSecretCode(e)}
-                  className="LoginFormField__input"
-                  placeholder="Maxfiy Kod"
-                />
-                <button
-                  className={`LoginFormFieldSecret__btn ${full ? "full" : ""}`}
-                >
-                  Kirish
-                </button>
-              </div>
-            </div>
-          </Fragment>
-        ) : degree == 2 ? (
-          <Fragment>
-            <h2 className="LoginForm__description">
-              Assalomu alaykum, siz saytdan ro'yxatdan o'tishingiz kerak !
-              Sababi bu raqam ( {number} ) oldin ro'yxatdan o'tmagan!
-            </h2>
-            <div className="LoginForm__field">
-              <div className="LoginFormField__image">
-                <div className="LoginFormFieldImage__content">
-                  <label htmlFor="selectImage" className="selectImageLabel">
-                    {imagePreview ? (
-                      <img
-                        src={imagePreview}
-                        alt="Selected"
-                        className="LoginFormField__image-preview"
-                      />
-                    ) : (
-                      <i className="fa-regular fa-circle-user icon"></i>
-                    )}
-                  </label>
-                  <input
-                    id="selectImage"
-                    name="selectImage"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    className="LoginFormField__inputimage"
-                  />
+            <h1 className="LoginForm__title">
+              {degree != "4" ? "Ro'yxatdan o'tish" : "Kirish"}
+              <i className="fa-solid fa-arrow-right icon"></i>
+            </h1>
+            {degree == 1 ? (
+              <Fragment>
+                <h2 className="LoginForm__description">
+                  Kirish uchun maxfiy kodni bizning{" "}
+                  <a
+                    href="https://t.me/haydovchilarga_guvohnomabot"
+                    target="_blank"
+                    className="LoginForm__telegramlink"
+                  >
+                    @haydovchibot
+                  </a>{" "}
+                  telegram botimizga kirgan holda olishingiz mumkin. ( Kod faqat
+                  1 daqiqa amal qiladi! )
+                </h2>
+                <div className="LoginForm__field">
+                  <p className="LoginFormField__title">KOD</p>
+                  <div className="LoginFormField__secret">
+                    <input
+                      type="text"
+                      name="secret-code"
+                      value={secretCode}
+                      onChange={(e) => handleChangeSecretCode(e)}
+                      className="LoginFormField__input"
+                      placeholder="Maxfiy Kod"
+                    />
+                    <button
+                      className={`LoginFormFieldSecret__btn ${
+                        full ? "full" : ""
+                      }`}
+                    >
+                      Kirish
+                    </button>
+                  </div>
                 </div>
-                <p className="LoginFormField__title">
-                  {imageFile ? imageFile.name : "Profile uchun rasm tanlang"}
-                </p>
-              </div>
-              <p className="LoginFormField__title">Ismingizni kiriting</p>
-              <input
-                type="text"
-                // name="secret-code"
-                value={first_name}
-                onChange={(e) => handleChangeFirstname(e)}
-                className="LoginFormField__input"
-                placeholder="Ism"
-              />
-              <p className="LoginFormField__title">Familyangizni kiriting</p>
-              <input
-                type="text"
-                // name="secret-code"
-                value={last_name}
-                onChange={(e) => handleChangeLastname(e)}
-                className="LoginFormField__input"
-                placeholder="Familya"
-              />
-              <button className={`LoginFormField__btn ${full ? "full" : ""}`}>
-                Davom etish...
-              </button>
-            </div>
+              </Fragment>
+            ) : degree == 2 ? (
+              <Fragment>
+                <h2 className="LoginForm__description">
+                  Assalomu alaykum, siz saytdan ro'yxatdan o'tishingiz kerak !
+                  Sababi bu raqam ( {number} ) oldin ro'yxatdan o'tmagan!
+                </h2>
+                <div className="LoginForm__field">
+                  <div className="LoginFormField__image">
+                    <div className="LoginFormFieldImage__content">
+                      <label htmlFor="selectImage" className="selectImageLabel">
+                        {imagePreview ? (
+                          <img
+                            src={imagePreview}
+                            alt="Selected"
+                            className="LoginFormField__image-preview"
+                          />
+                        ) : (
+                          <i className="fa-regular fa-circle-user icon"></i>
+                        )}
+                      </label>
+                      <input
+                        id="selectImage"
+                        name="selectImage"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="LoginFormField__inputimage"
+                      />
+                    </div>
+                    <p className="LoginFormField__title">
+                      {imageFile
+                        ? imageFile.name
+                        : "Profile uchun rasm tanlang"}
+                    </p>
+                  </div>
+                  <p className="LoginFormField__title">Ismingizni kiriting</p>
+                  <input
+                    type="text"
+                    // name="secret-code"
+                    value={first_name}
+                    onChange={(e) => handleChangeFirstname(e)}
+                    className="LoginFormField__input"
+                    placeholder="Ism"
+                  />
+                  <p className="LoginFormField__title">
+                    Familyangizni kiriting
+                  </p>
+                  <input
+                    type="text"
+                    // name="secret-code"
+                    value={last_name}
+                    onChange={(e) => handleChangeLastname(e)}
+                    className="LoginFormField__input"
+                    placeholder="Familya"
+                  />
+                  <button
+                    className={`LoginFormField__btn ${full ? "full" : ""}`}
+                  >
+                    Davom etish...
+                  </button>
+                </div>
+              </Fragment>
+            ) : degree == 3 ? (
+              <Fragment>
+                <h2 className="LoginForm__description">
+                  Yaxshi, endi siz sahifangizga kirish uchun parol qo'yishingiz
+                  kerak bo'ladi!
+                </h2>
+                <div className="LoginForm__field">
+                  <p className="LoginFormField__title">Parolni kiriting</p>
+                  <input
+                    type="password"
+                    // name="secret-code"
+                    value={password}
+                    onChange={(e) => handleChangePassword(e, setPassword)}
+                    className="LoginFormField__input"
+                    placeholder="Parol"
+                  />
+                  <p className="LoginFormField__title">
+                    Tasdiqlash parolini kiriting
+                  </p>
+                  <input
+                    type="password"
+                    // name="secret-code"
+                    value={confirmPassword}
+                    onChange={(e) =>
+                      handleChangeConfirmPassword(e, setConfirmPassword)
+                    }
+                    className="LoginFormField__input"
+                    placeholder="Tasdiqlash paroli"
+                  />
+                  <button
+                    className={`LoginFormField__btn ${full ? "full" : ""}`}
+                  >
+                    Ro'yxatdan o'tish
+                  </button>
+                </div>
+              </Fragment>
+            ) : degree == 4 ? (
+              <Fragment>
+                <h2 className="LoginForm__description">
+                  Bizning tizimda sizning ma'lumotlaringiz topildi, shu sababli
+                  parolni kiritib tizimga kirishingiz mumkin!
+                </h2>
+                <div className="LoginForm__field">
+                  <p className="LoginFormField__title">Telefon Raqam</p>
+                  <input
+                    type="tel"
+                    // name="secret-code"
+                    value={number}
+                    onChange={(e) => handleChangePassword(e, setPassword)}
+                    className="LoginFormField__input"
+                    placeholder="Telefon raqam"
+                    disabled={true}
+                  />
+                  <p className="LoginFormField__title">Parol</p>
+                  <input
+                    type="password"
+                    // name="secret-code"
+                    value={password}
+                    onChange={(e) => changePassword(e, setPassword)}
+                    className="LoginFormField__input"
+                    placeholder="Parolni kiriting"
+                  />
+                  <button
+                    className={`LoginFormField__btn ${full ? "full" : ""}`}
+                  >
+                    Kirish
+                  </button>
+                </div>
+              </Fragment>
+            ) : null}
           </Fragment>
-        ) : degree == 3 ? (
-          <Fragment>
-            <h2 className="LoginForm__description">
-              Yaxshi, endi siz sahifangizga kirish uchun parol qo'yishingiz
-              kerak bo'ladi!
-            </h2>
-            <div className="LoginForm__field">
-              <p className="LoginFormField__title">Parolni kiriting</p>
-              <input
-                type="password"
-                // name="secret-code"
-                value={password}
-                onChange={(e) => handleChangePassword(e, setPassword)}
-                className="LoginFormField__input"
-                placeholder="Parol"
-              />
-              <p className="LoginFormField__title">
-                Tasdiqlash parolini kiriting
-              </p>
-              <input
-                type="password"
-                // name="secret-code"
-                value={confirmPassword}
-                onChange={(e) =>
-                  handleChangeConfirmPassword(e, setConfirmPassword)
-                }
-                className="LoginFormField__input"
-                placeholder="Tasdiqlash paroli"
-              />
-              <button className={`LoginFormField__btn ${full ? "full" : ""}`}>
-                Ro'yxatdan o'tish
-              </button>
-            </div>
-          </Fragment>
-        ) : degree == 4 ? (
-          <Fragment>
-            <h2 className="LoginForm__description">
-              Bizning tizimda sizning ma'lumotlaringiz topildi, shu sababli
-              parolni kiritib tizimga kirishingiz mumkin!
-            </h2>
-            <div className="LoginForm__field">
-              <p className="LoginFormField__title">Telefon Raqam</p>
-              <input
-                type="tel"
-                // name="secret-code"
-                value={number}
-                onChange={(e) => handleChangePassword(e, setPassword)}
-                className="LoginFormField__input"
-                placeholder="Telefon raqam"
-                disabled={true}
-              />
-              <p className="LoginFormField__title">Parol</p>
-              <input
-                type="password"
-                // name="secret-code"
-                value={password}
-                onChange={(e) => changePassword(e, setPassword)}
-                className="LoginFormField__input"
-                placeholder="Parolni kiriting"
-              />
-              <button className={`LoginFormField__btn ${full ? "full" : ""}`}>
-                Kirish
-              </button>
-            </div>
-          </Fragment>
-        ) : null}
+        )}
       </form>
     </div>
   );

@@ -1,9 +1,16 @@
-.Loader{
+.Loader {
   width: 100%;
-  min-height: calc(100vh - 130px);
+  /* min-height: calc(100vh - 130px); */
   padding: 10px 40px;
-  background-color: #e7eff6;
+  /* background-color: #e7eff6; */
   border-radius: 4px;
+}
+.login_loader {
+  min-height: 300px;
+}
+.without {
+  min-height: calc(100vh - 130px);
+  background-color: #e7eff6;
 }
 .Loader .lds-roller {
   display: inline-block;
