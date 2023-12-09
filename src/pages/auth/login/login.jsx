@@ -5,6 +5,7 @@ import {
   handler,
   success_notify,
   user_axios,
+  warning_notify,
 } from "../../../shared";
 import { Loader } from "../../../layouts";
 export const Login = () => {
@@ -43,7 +44,7 @@ export const Login = () => {
       value == ""
     ) {
       setFirst_name(value);
-      if (value && last_name && imageFile) {
+      if (value && last_name) {
         setFull(true);
       } else {
         setFull(false);
@@ -59,7 +60,7 @@ export const Login = () => {
       value == ""
     ) {
       setLast_name(value);
-      if (value && first_name && imageFile) {
+      if (value && first_name) {
         setFull(true);
       } else {
         setFull(false);
@@ -69,19 +70,28 @@ export const Login = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setImageFile(file);
+    if (file) {
+      let extName = file.name.split(".").slice(-1)[0];
+      if (extName == "jpg" || extName == "png" || extName == "jpeg") {
+        setImageFile(file);
 
-    if (file && last_name && first_name) {
-      setFull(true);
-    } else {
-      setFull(false);
+        if (last_name && first_name) {
+          setFull(true);
+        } else {
+          setFull(false);
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+          setImagePreview(reader.result);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        warning_notify("Boshqa rasm tanlang!");
+        setImagePreview("");
+        setImageFile("");
+      }
     }
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      setImagePreview(reader.result);
-    };
-    reader.readAsDataURL(file);
   };
 
   const handleChangePassword = async (e, states) => {
@@ -221,6 +231,9 @@ export const Login = () => {
     }
 
     if (degree == 2) {
+      if (!imageFile) {
+        return warning_notify("Rasm tanlashingiz kerak!");
+      }
       setDegree("3");
       setFull(false);
     }
@@ -388,7 +401,6 @@ export const Login = () => {
                   <p className="LoginFormField__title">Telefon Raqam</p>
                   <input
                     type="tel"
-                    // name="secret-code"
                     value={number}
                     onChange={(e) => handleChangePassword(e, setPassword)}
                     className="LoginFormField__input"
@@ -398,7 +410,6 @@ export const Login = () => {
                   <p className="LoginFormField__title">Parol</p>
                   <input
                     type="password"
-                    // name="secret-code"
                     value={password}
                     onChange={(e) => changePassword(e, setPassword)}
                     className="LoginFormField__input"
