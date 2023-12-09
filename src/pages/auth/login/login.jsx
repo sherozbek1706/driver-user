@@ -70,9 +70,21 @@ export const Login = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+
     if (file) {
-      let extName = file.name.split(".").slice(-1)[0];
-      if (extName == "jpg" || extName == "png" || extName == "jpeg") {
+      // Check file size
+      const fileSizeInMegabytes = file.size / (1024 * 1024); // Convert to MB
+      if (fileSizeInMegabytes > 1.5) {
+        warning_notify("Fayl hajmi katta!");
+        setImagePreview("");
+        setImageFile("");
+        return;
+      }
+
+      const allowedExtensions = ["jpg", "png", "jpeg"];
+      const extName = file.name.split(".").slice(-1)[0].toLowerCase();
+
+      if (allowedExtensions.includes(extName)) {
         setImageFile(file);
 
         if (last_name && first_name) {
