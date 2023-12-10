@@ -43,43 +43,18 @@ export const Profile = () => {
           title={"Mening Sahifam"}
         />
         <div className="ProfileMain">
-          {/* <div className="ProfileMain page_build"> */}
-          {/* <Build /> */}
-          <div className="ProfileBanner">
-            <h1 className="ProfileBanner__title">
-              {data.first_name} {data.last_name}
-            </h1>
-            <div className="profileBannerImage">
+          <div className="ProfileMainHeader">
+            <div className="ProfileMainHeaderImage">
               <img src={api + data.image} alt="" />
             </div>
           </div>
-          <div className="ProfileInfo">
-            <div className="ProfileInfo__options">
-              <button className="ProfileInfoBtns">
-                <i className="fa-solid fa-key icon"></i>Parol Almashtirish
-              </button>
-              <button className="ProfileInfoBtns">
-                <i className="fa-solid fa-pen icon"></i>Tahrirlash
-              </button>
-            </div>
-            <div className="ProfileInfo__options">
-              <button className="ProfileInfoBtns" onClick={logoutFunc}>
-                <i className="fa-solid fa-right-from-bracket icon"></i>Tizimdan
-                chiqish
-              </button>
-            </div>
-          </div>
-          <div className="ProfileInfos">
-            <h2 className="ProfileInfos__fullname">
+          <div className="ProfileMainName">
+            <h1>
               {data.first_name} {data.last_name}
-              <a
-                href={`tel:${data.phone_number}`}
-                className="ProfileInfos__number"
-              >
-                {data.phone_number}
-              </a>
-            </h2>
-            <h2 className="ProfileInfos__username">@{data.username}</h2>
+            </h1>
+          </div>
+          <div className="LogOutSection" onClick={logoutFunc}>
+            <button>Tizimdan Chiqish</button>
           </div>
         </div>
       </div>
