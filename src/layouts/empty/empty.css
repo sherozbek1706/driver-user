@@ -1,0 +1,56 @@
+.Empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px 0;
+}
+.Empty .icon {
+  font-size: 100px;
+  padding: 20px;
+  color: #63ace5;
+}
+.Empty__title {
+  font-size: 28px;
+  letter-spacing: -1.4px;
+}
+.Empty__text {
+  font-size: 16px;
+  font-weight: 500;
+  width: 500px;
+  text-align: center;
+  margin-top: 21px;
+}
+
+@media (max-width: 1100px) {
+  .Empty .icon {
+    font-size: 82px;
+  }
+  .Empty__title {
+    font-size: 22px;
+  }
+  .Empty__text {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .Empty .icon {
+    font-size: 64px;
+    text-align: center;
+  }
+  .Empty__title {
+    font-size: 18px;
+    letter-spacing: -0.8px;
+    text-align: center;
+  }
+  .Empty__text {
+    font-size: 14px;
+    margin-top: 10px;
+    width: auto;
+    text-align: center;
+  }
+}

@@ -1,5 +1,5 @@
 import { Header, Navbar } from "../../components";
-import { Build, Loader } from "../../layouts";
+import { Build, Empty, Loader } from "../../layouts";
 import "./order-history.css";
 import { handler } from "../../shared/";
 import { user_axios } from "../../shared/";
@@ -42,23 +42,27 @@ export const OrderHistory = () => {
             <Loader />
           ) : (
             <div className="OrderLists">
-              {data.map((item) => (
-                <div className="OrderItem" key={item.id}>
-                  {/* <h1></h1>
+              {data?.length == 0 ? (
+                <Empty />
+              ) : (
+                data.map((item) => (
+                  <div className="OrderItem" key={item.id}>
+                    {/* <h1></h1>
                   <h2>{item.district}</h2> */}
-                  <div className="OrderItem__head">
-                    <p className="OrderItemHead__idx">#{item.id}</p>
-                    <p className="OrderItemHead__status">{item.status}</p>
+                    <div className="OrderItem__head">
+                      <p className="OrderItemHead__idx">#{item.id}</p>
+                      <p className="OrderItemHead__status">{item.status}</p>
+                    </div>
+                    <div className="OrderItem__body">
+                      <h1 className="OrderItem__address">{item.address}</h1>
+                      <h2 className="OrderItem__district">{item.district}</h2>
+                      <p className="OrderItem__date">
+                        {formatDate(item.created_at)}
+                      </p>
+                    </div>
                   </div>
-                  <div className="OrderItem__body">
-                    <h1 className="OrderItem__address">{item.address}</h1>
-                    <h2 className="OrderItem__district">{item.district}</h2>
-                    <p className="OrderItem__date">
-                      {formatDate(item.created_at)}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           )}
         </div>
