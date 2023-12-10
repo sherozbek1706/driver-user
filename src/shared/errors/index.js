@@ -1,4 +1,4 @@
-import { error_notify } from "../notify";
+import { error_notify, info_notify } from "../notify";
 
 export const handler = (err) => {
   let status = err?.response?.status;
@@ -6,6 +6,11 @@ export const handler = (err) => {
 
   if (status == "404") {
     error_notify(error_msg);
+    if (error_msg == "Foydalanuvchi topilmadi!") {
+      info_notify("Qaytadan tizimga kiring!");
+      localStorage.clear();
+      window.location.assign("/");
+    }
   }
 
   if (status == "403") {
