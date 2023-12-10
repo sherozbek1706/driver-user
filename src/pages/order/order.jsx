@@ -120,6 +120,19 @@ export const Order = () => {
     }
   };
 
+  const handleCancelOrder = async () => {
+    try {
+      let res = await user_axios.get("/users/cancel/order");
+
+      if (res.status == 200) {
+        setSection(1);
+      }
+    } catch (error) {
+      setLoading(false);
+      handler(error);
+    }
+  };
+
   return (
     <div className="Default">
       <Navbar />
@@ -138,42 +151,42 @@ export const Order = () => {
               {/* <Build />  */}
               <div className="OrderMainSection">
                 <h3 className={`OrderMain__section OrderMain__section_active`}>
-                  <i class="fa-solid fa-circle-plus icon"></i>
+                  <i className="fa-solid fa-circle-plus icon"></i>
                 </h3>
                 <h3
                   className={`OrderMain__section ${
                     section >= "2" && "OrderMain__section_active"
                   }`}
                 >
-                  <i class="fa-solid fa-magnifying-glass icon"></i>
+                  <i className="fa-solid fa-magnifying-glass icon"></i>
                 </h3>
                 <h3
                   className={`OrderMain__section ${
                     section >= "3" && "OrderMain__section_active"
                   }`}
                 >
-                  <i class="fa-solid fa-taxi icon"></i>
+                  <i className="fa-solid fa-taxi icon"></i>
                 </h3>
                 <h3
                   className={`OrderMain__section ${
                     section >= "4" && "OrderMain__section_active"
                   }`}
                 >
-                  <i class="fa-solid fa-location-dot icon"></i>
+                  <i className="fa-solid fa-location-dot icon"></i>
                 </h3>
                 <h3
                   className={`OrderMain__section ${
                     section >= "5" && "OrderMain__section_active"
                   }`}
                 >
-                  <i class="fa-solid fa-route icon"></i>
+                  <i className="fa-solid fa-route icon"></i>
                 </h3>
                 <h3
                   className={`OrderMain__section ${
                     section >= "6" && "OrderMain__section_active"
                   }`}
                 >
-                  <i class="fa-solid fa-flag-checkered icon"></i>
+                  <i className="fa-solid fa-flag-checkered icon"></i>
                 </h3>
               </div>
               {section == "1" ? (
@@ -221,12 +234,15 @@ export const Order = () => {
               ) : section == "2" ? (
                 <Fragment>
                   <div className="OrderMainSearching">
-                    <i class="fa-brands fa-searchengin SearchChangingForm"></i>
+                    <i className="fa-brands fa-searchengin SearchChangingForm"></i>
                     <h1 className="OrderMainSearching__title">
                       {" "}
                       Buyurtmangizga haydovchi qidirilmoqda...{" "}
                     </h1>
-                    <button className="OrderMainSearching__btn">
+                    <button
+                      className="OrderMainSearching__btn"
+                      onClick={handleCancelOrder}
+                    >
                       Bekor Qilish
                     </button>
                   </div>
@@ -263,14 +279,14 @@ export const Order = () => {
                     </div>
                     <div className="OrderMainDriver__order">
                       <div className="OrderMainDriverOrder__options">
-                        <i class="fa-solid fa-location-dot icon"></i>
+                        <i className="fa-solid fa-location-dot icon"></i>
                         <p>
                           <span>Haydovchi kelayotgan manzil</span>:{" "}
                           {findDriver.address}, {findDriver.district}
                         </p>
                       </div>
                       <div className="OrderMainDriverOrder__options">
-                        <i class="fa-solid fa-clock icon"></i>
+                        <i className="fa-solid fa-clock icon"></i>
                         <p>
                           <span>Tahminiy kelish vaqti</span>:{" "}
                           {findDriver.delay_time || 5} daqiqada keladi!
@@ -282,7 +298,7 @@ export const Order = () => {
                         href={`tel:` + findDriver.phone_number}
                         className="OrderDriverCall__btn"
                       >
-                        <i class="fa-solid fa-square-phone icon"></i>
+                        <i className="fa-solid fa-square-phone icon"></i>
                         Telefon Qilish
                       </a>
                     </div>
@@ -291,14 +307,14 @@ export const Order = () => {
               ) : section == "4" ? (
                 <Fragment>
                   <div className="OrderMainFour">
-                    <i class="fa-solid fa-location-dot icon"></i>
+                    <i className="fa-solid fa-location-dot icon"></i>
                     <h1>Haydovchi manzilga yetib keldi, sizni kutyabdi.</h1>
                   </div>
                 </Fragment>
               ) : section == "5" ? (
                 <Fragment>
                   <div className="OrderMainFive">
-                    <i class="fa-solid fa-route icon"></i>
+                    <i className="fa-solid fa-route icon"></i>
                     <h1>
                       Oq Yo'l. Safaringiz bexatar bo'lsin. Bizning xizmatdan
                       foydalanayotganingiz uchun raxmat!
@@ -308,7 +324,7 @@ export const Order = () => {
               ) : section == "6" ? (
                 <Fragment>
                   <div className="OrderMainSix">
-                    <i class="fa-solid fa-flag-checkered icon"></i>
+                    <i className="fa-solid fa-flag-checkered icon"></i>
                     <h1>
                       Manzilgan yetib keldingiz. Bizning xizmatdan
                       foydalanganingiz uchun raxmat.
