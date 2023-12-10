@@ -6,7 +6,7 @@ export const Loader = ({ additionClass }) => {
         additionClass == "Login" ? "login_loader" : "without"
       } Loader page_build`}
     >
-      <div class="lds-roller">
+      <div className="lds-roller">
         <div></div>
         <div></div>
         <div></div>
