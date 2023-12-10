@@ -7,8 +7,6 @@ export const Navbar = () => {
     let sitebar = document.querySelector(".Navbar");
 
     sitebar.classList.remove("sticky-navbar");
-
-    console.log(sitebar);
   };
 
   return (
