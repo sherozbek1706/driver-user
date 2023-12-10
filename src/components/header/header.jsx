@@ -6,8 +6,6 @@ export const Header = ({ title, icon }) => {
     let sitebar = document.querySelector(".Navbar");
 
     sitebar.classList.toggle("sticky-navbar");
-
-    console.log(sitebar);
   };
 
   return (
@@ -17,7 +15,7 @@ export const Header = ({ title, icon }) => {
         {title || "No'malum"}
       </h1>
       <i
-        class="fa-solid fa-bars bar-icon"
+        className="fa-solid fa-bars bar-icon"
         onClick={() => handleShowSitebar()}
       ></i>
     </div>
