@@ -125,6 +125,7 @@ export const Order = () => {
       let res = await user_axios.get("/users/cancel/order");
 
       if (res.status == 200) {
+        socket.emit("buyurtma_uchirish", { msg: "go" });
         setSection(1);
       }
     } catch (error) {
