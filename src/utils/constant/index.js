@@ -1,2 +1,1 @@
-export const api = "https://api.sherozbek.uz";
-// export const api = "http://localhost:5000";
+export const api = process.env.REACT_APP_BACKEND_URL;
